@@ -33,9 +33,9 @@ class EcommerceCartScreenCubit extends BaseCubit<EcommerceCartScreenState> {
     emit(state.copyWith(cartItems: ProductsDatabase.cartItems));
   }
 
-  void openRazorpayPaymentLink(String url, double amount) async {
-    if (await canLaunchUrl(Uri.parse('$url?amount=$amount'))) {
-      await launchUrl(Uri.parse('$url?amount=$amount'));
+  void openRazorpayPaymentLink(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch $url';
     }
